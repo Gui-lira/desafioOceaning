@@ -16,7 +16,12 @@ const Provider = ({ children }) => {
     }
 
     const handleSkills = (arr) => {
-        setSkills(...arr)
+        setSkills((pastState) => ([...pastState, arr]))
+    }
+
+    const excludeSkill = (skill) => {
+        const newArr = selectedSkills.filter((str) => str !== skill)
+        setSkills(newArr)
     }
 
     const context = {
@@ -27,6 +32,7 @@ const Provider = ({ children }) => {
         handleName,
         handleEmail,
         handleSkills,
+        excludeSkill,
     }
 
     return (
