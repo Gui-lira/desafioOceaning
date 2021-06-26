@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import LoginContext from '../context';
 
 export default function SkillsPage() {
@@ -53,6 +54,7 @@ export default function SkillsPage() {
        <div>
             <div>
             <input type="text" onChange={ handleInput } placeholder="Digite uma habilidade"/>
+            <Link to="/register/end">Finalizar</Link>
             { renderSkillsButtons() }            
         </div>
         <div>

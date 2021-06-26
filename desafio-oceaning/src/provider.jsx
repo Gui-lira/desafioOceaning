@@ -5,6 +5,7 @@ const Provider = ({ children }) => {
     const [name, changeName] = useState('');
     const [email, changeEmail] = useState('');
     const [selectedSkills, setSkills] = useState([]);
+    const [addedDevelopers, setDeveloper] = useState([]);
     const skills = ['React','React Native','PHP','Java','Javascript','C#','C++','Ruby','CSS','HTML5','NodeJs']
 
     const handleName = (str) => {
@@ -24,6 +25,16 @@ const Provider = ({ children }) => {
         setSkills(newArr)
     }
 
+    const handleDeveloper = (obj) => {
+        setDeveloper((pastState) => ([...pastState, obj]))
+    }
+
+    const resetState = () => {
+        changeName('')
+        changeEmail('')
+        setSkills([])
+    }
+
     const context = {
         name,
         email,
@@ -33,6 +44,9 @@ const Provider = ({ children }) => {
         handleEmail,
         handleSkills,
         excludeSkill,
+        addedDevelopers,
+        handleDeveloper,
+        resetState,
     }
 
     return (
