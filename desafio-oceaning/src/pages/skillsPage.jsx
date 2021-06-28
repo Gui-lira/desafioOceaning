@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LoginContext from '../context';
+import Header from '../components/header'
 
 export default function SkillsPage() {
     const [inputSkill, setSkill] = useState('')
     const [skillsList, setVisibility] = useState(false)
-    const { handleSkills, skills, selectedSkills, excludeSkill } = useContext(LoginContext);
+    const { handleSkills, skills, selectedSkills, excludeSkill, name } = useContext(LoginContext);
 
     const handleButtons = ({target}) => {
         handleSkills(target.value)
@@ -16,7 +17,7 @@ export default function SkillsPage() {
             const filteredSkills = skills.filter((skill) => skill.toLowerCase().includes(inputSkill.toLowerCase()));
             return (
                 <div>
-                    {filteredSkills.map((skill) => <button value={skill} onClick={handleButtons}>{skill}</button>)}
+                    {filteredSkills.map((skill) => <button value={skill} className="buttonSkill" onClick={handleButtons}>{skill}</button>)}
                 </div>
             )
         }
@@ -32,12 +33,16 @@ export default function SkillsPage() {
 
     const handleList = () => {
         return (
-            <div className={skillsList ? '': 'none'}>
+            <div className={skillsList ? "SelectedSkills": 'none'}>
                 <ul>
                     {selectedSkills.map((skill) => (
                         <li>
                           <p>{skill}</p>
-                          <button value={skill} onClick={excludeButton}>excluir</button>
+                          <button 
+                           value={skill} 
+                           onClick={excludeButton}                           
+                          >
+                          excluir</button>
                         </li>
                     ))}
                 </ul>
@@ -51,14 +56,19 @@ export default function SkillsPage() {
 
 
     return (
-       <div>
-            <div>
-            <input type="text" onChange={ handleInput } placeholder="Digite uma habilidade"/>
-            <Link to="/register/end">Finalizar</Link>
-            { renderSkillsButtons() }            
-        </div>
-        <div>
-            <button onClick={ handleVisibility }>
+       <div className="container">
+          <Header />
+          <div className="main">
+              <div>
+                <h2>Olá,{`${name}`},</h2>
+                <h1>Quais são suas habilidades?</h1>                  
+                <input type="text" onChange={ handleInput } placeholder="Digite uma habilidade"/>
+                { renderSkillsButtons() }
+              </div>            
+            <Link className="buttonLink" to="/register/end">Finalizar</Link>                        
+         </div>
+        <div className="container">
+            <button className="buttonSelectedSkills" onClick={ handleVisibility }>
                 {selectedSkills.length > 0 ? `${selectedSkills.length} habilidades adicionadas`: 'nenhuma habilidade adicionada'}
             </button>
             { handleList() }

@@ -23,7 +23,7 @@ export default function EndPage() {
     }, [])
 
     return (
-        <div>
+        <div className="container">
             <Header />
             <h2>Parabens</h2>
             <h1>Suas habilidades foram enviadas</h1>
@@ -31,7 +31,7 @@ export default function EndPage() {
                 <br/>
                 e conquiste o mundo com suas habilidades de programação
             </p>
-            <Link to='/developers'>Ver todos</Link>
+            <Link className="buttonLink" to='/developers'>Ver todos</Link>
         </div>
     )
 }
