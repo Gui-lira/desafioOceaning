@@ -41,7 +41,7 @@ const NamePage = () => {
 
     const loginForm = ( value, id, handleButton, placeholder ) => {
         return (
-        <div>
+        <div className="main">
             <input
             type="text"
             id={ id }
@@ -49,7 +49,7 @@ const NamePage = () => {
             onChange={ handleInput }
             placeholder={`Digite seu ${placeholder}`}
             />
-            <button type="button" onClick={ handleButton }>
+            <button className="buttonLink"  type="button" onClick={ handleButton }>
                 continuar
             </button>
         </div>

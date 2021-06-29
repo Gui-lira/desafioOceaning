@@ -44,13 +44,13 @@ export default function DevelopersPage() {
     }
 
     return (
-        <div>
+        <div className="container">
             <Header />
-            <div>
+            <div class="containerDevelopersPage">
                 <h2>{`${addedDevelopers.length} desenvolvedores encontrados`}</h2>
-                <Link to="/register/name">Adicionar</Link>
+                <Link className="buttonLink" to="/register/name">Adicionar</Link>
             </div>
-            <div>
+            <div className="developersContainer">
                 {renderDevelopers()}
             </div>
         </div>
